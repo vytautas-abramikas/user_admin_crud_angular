@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { UserModalComponent } from './components/user-modal/user-modal.component';
+import { RemoveUserModalComponent } from './remove-user-modal/remove-user-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ import { UserModalComponent } from './components/user-modal/user-modal.component
     HeaderComponent,
     UsersTableComponent,
     UserModalComponent,
+    RemoveUserModalComponent,
   ],
   templateUrl: './app.component.html',
 })

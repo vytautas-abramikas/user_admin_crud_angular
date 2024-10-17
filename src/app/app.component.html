@@ -10,6 +10,8 @@
     <app-user-modal
       *ngIf="isVisibleEditUserModal$ | async as isVisibleEditUserModal"
     ></app-user-modal>
-    <!-- <RemoveUserModal v-if="isVisibleRemoveUserModal" /> -->
+    <app-remove-user-modal
+      *ngIf="isVisibleRemoveUserModal$ | async as isVisibleRemoveUserModal"
+    ></app-remove-user-modal>
   </div>
 </div>

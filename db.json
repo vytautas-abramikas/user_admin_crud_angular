@@ -69,34 +69,6 @@
       "username": "jackk",
       "email": "jack@example.com",
       "role": "User"
-    },
-    {
-      "id": "1729177715721",
-      "username": "aaaabcd",
-      "name": "aaaabcd",
-      "email": "aaa@aa.aaa",
-      "role": "Administrator"
-    },
-    {
-      "id": "1729179163450",
-      "username": "aaag",
-      "name": "aaag",
-      "email": "aaa@aag",
-      "role": "Administrator"
-    },
-    {
-      "id": "1729179218675",
-      "username": "aaa",
-      "name": "aaa",
-      "email": "aaa@aa.a",
-      "role": "User"
-    },
-    {
-      "id": "1729181062084",
-      "username": "aab",
-      "name": "aab",
-      "email": "aa@aa.a",
-      "role": "User"
     }
   ]
 }
