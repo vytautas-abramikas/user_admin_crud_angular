@@ -46,48 +46,48 @@ export class UserStateService {
   }
 
   fetchUsers() {
-    this.http.get<TUser[]>('http://localhost:3001/users').subscribe(
-      (users) => this.usersSubject.next(users),
-      (error) => console.error('Error fetching users:', error)
-    );
+    this.http.get<TUser[]>('http://localhost:3001/users').subscribe({
+      next: (users) => this.usersSubject.next(users),
+      error: (error) => console.error('Error fetching users:', error),
+    });
   }
 
   createUser(user: TUser) {
-    this.http.post<TUser>('http://localhost:3001/users', user).subscribe(
-      (newUser) => {
+    this.http.post<TUser>('http://localhost:3001/users', user).subscribe({
+      next: (newUser) => {
         this.usersSubject.next([...this.usersSubject.value, newUser]);
         this.setModalVisibility('add', false);
       },
-      (error) => console.error('Error adding user:', error)
-    );
+      error: (error) => console.error('Error adding user:', error),
+    });
   }
 
   updateUser(updatedUser: TUser) {
     this.http
       .put<TUser>(`http://localhost:3001/users/${updatedUser.id}`, updatedUser)
-      .subscribe(
-        (updated) => {
+      .subscribe({
+        next: (updated) => {
           const updatedUsers = this.usersSubject.value.map((user) =>
             user.id === updated.id ? updated : user
           );
           this.usersSubject.next(updatedUsers);
           this.setModalVisibility('edit', false);
         },
-        (error) => console.error('Error editing user:', error)
-      );
+        error: (error) => console.error('Error editing user:', error),
+      });
   }
 
   deleteUser(userId: string) {
-    this.http.delete(`http://localhost:3001/users/${userId}`).subscribe(
-      () => {
+    this.http.delete(`http://localhost:3001/users/${userId}`).subscribe({
+      next: () => {
         const updatedUsers = this.usersSubject.value.filter(
           (user) => user.id !== userId
         );
         this.usersSubject.next(updatedUsers);
         this.setModalVisibility('remove', false);
       },
-      (error) => console.error('Error removing user:', error)
-    );
+      error: (error) => console.error('Error removing user:', error),
+    });
   }
 
   setFilterTerm(term: string) {
