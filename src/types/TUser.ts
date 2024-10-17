@@ -1,7 +1,7 @@
-export type TUser = {
+export interface TUser {
   id: string;
   name: string;
   username: string;
   email: string;
-  role: "User" | "Administrator";
-};
+  role: 'User' | 'Administrator';
+}

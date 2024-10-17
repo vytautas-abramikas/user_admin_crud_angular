@@ -1,5 +1,5 @@
 <div
-  *ngIf="userModalMode === 'add' ? 'addUserModal' : 'editUserModal'"
+  [id]="userModalMode + 'UserModal'"
   class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center"
 >
   <div class="bg-white p-8 rounded-lg shadow-2xl">

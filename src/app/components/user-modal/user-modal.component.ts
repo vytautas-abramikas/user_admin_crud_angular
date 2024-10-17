@@ -37,6 +37,10 @@ export class UserModalComponent implements OnInit {
     });
   }
 
+  emptyUser(): TUser {
+    return { id: '', username: '', name: '', email: '', role: 'User' };
+  }
+
   ngOnInit() {
     combineLatest([
       this.userStateService.userModalMode$,
@@ -52,10 +56,6 @@ export class UserModalComponent implements OnInit {
           : users.find((user) => user.id === id) || this.emptyUser();
       this.userForm.patchValue(userData);
     });
-  }
-
-  emptyUser(): TUser {
-    return { id: '', username: '', name: '', email: '', role: 'User' };
   }
 
   handleSubmit() {
@@ -80,9 +80,9 @@ export class UserModalComponent implements OnInit {
   emailValidator(): ValidatorFn {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    return (control: AbstractControl): { [key: string]: any } | null => {
+    return (control: AbstractControl): Record<string, string> | null => {
       const valid = emailRegex.test(control.value);
-      return valid ? null : { invalidEmail: { value: control.value } };
+      return valid ? null : { invalidEmail: control.value };
     };
   }
 }
