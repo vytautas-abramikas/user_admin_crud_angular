@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserStateService } from '../../services/user-state.service';
+import { UserStateService } from '../../../services/user-state.service';
 import { combineLatest } from 'rxjs';
-import { TUser } from '../../types/TUser';
+import { TUser } from '../../../types/TUser';
 
 @Component({
   selector: 'app-remove-user-modal',
