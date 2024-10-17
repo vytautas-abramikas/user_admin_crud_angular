@@ -1,0 +1,74 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Alice Johnson",
+      "username": "alicej",
+      "email": "alice@example.com",
+      "role": "User"
+    },
+    {
+      "id": "2",
+      "name": "Bob Brown",
+      "username": "bobb",
+      "email": "bob@example.com",
+      "role": "Administrator"
+    },
+    {
+      "id": "3",
+      "name": "Charlie Davis",
+      "username": "charlied",
+      "email": "charlie@example.com",
+      "role": "User"
+    },
+    {
+      "id": "4",
+      "name": "Dana Evans",
+      "username": "danae",
+      "email": "dana@example.com",
+      "role": "User"
+    },
+    {
+      "id": "5",
+      "name": "Eve Foster",
+      "username": "evef",
+      "email": "eve@example.com",
+      "role": "User"
+    },
+    {
+      "id": "6",
+      "name": "Frank Green",
+      "username": "frankg",
+      "email": "frank@example.com",
+      "role": "User"
+    },
+    {
+      "id": "7",
+      "name": "Grace Harris",
+      "username": "graceh",
+      "email": "grace@example.com",
+      "role": "Administrator"
+    },
+    {
+      "id": "8",
+      "name": "Hank Irwin",
+      "username": "hanki",
+      "email": "hank@example.com",
+      "role": "User"
+    },
+    {
+      "id": "9",
+      "name": "Ivy Jones",
+      "username": "ivyj",
+      "email": "ivy@example.com",
+      "role": "User"
+    },
+    {
+      "id": "10",
+      "name": "Jack King",
+      "username": "jackk",
+      "email": "jack@example.com",
+      "role": "User"
+    }
+  ]
+}
