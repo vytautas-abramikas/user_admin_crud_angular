@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UserStateService } from '../../../services/user-state.service';
+import { combineLatest } from 'rxjs';
 import {
   ReactiveFormsModule,
   FormBuilder,
   FormGroup,
   Validators,
+  AbstractControl,
+  ValidatorFn,
 } from '@angular/forms';
-import { UserStateService } from '../../../services/user-state.service';
-import { Observable, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { TUser } from '../../../types/TUser';
 
 @Component({
@@ -28,10 +29,11 @@ export class UserModalComponent implements OnInit {
     private userStateService: UserStateService
   ) {
     this.userForm = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      role: ['User', Validators.required],
+      id: [''],
+      username: ['', [Validators.minLength(3)]],
+      name: ['', [Validators.minLength(3)]],
+      email: ['', [this.emailValidator()]],
+      role: ['User'],
     });
   }
 
@@ -59,19 +61,28 @@ export class UserModalComponent implements OnInit {
   handleSubmit() {
     if (this.userForm.valid) {
       const userToSave = { ...this.userForm.value };
-
       if (this.userModalMode === 'add') {
-        userToSave.id = Date.now().toString();
-        this.userStateService.createUser(userToSave);
+        this.userStateService.createUser({
+          ...userToSave,
+          id: Date.now().toString(),
+        });
       } else {
         this.userStateService.updateUser(userToSave);
       }
-
       this.userStateService.setModalVisibility(this.userModalMode, false);
     }
   }
 
-  cancel() {
+  closeUserModal() {
     this.userStateService.setModalVisibility(this.userModalMode, false);
+  }
+
+  emailValidator(): ValidatorFn {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const valid = emailRegex.test(control.value);
+      return valid ? null : { invalidEmail: { value: control.value } };
+    };
   }
 }

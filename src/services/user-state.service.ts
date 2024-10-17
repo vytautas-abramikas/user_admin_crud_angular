@@ -46,14 +46,14 @@ export class UserStateService {
   }
 
   fetchUsers() {
-    this.http.get<TUser[]>('http://localhost:3002/users').subscribe(
+    this.http.get<TUser[]>('http://localhost:3001/users').subscribe(
       (users) => this.usersSubject.next(users),
       (error) => console.error('Error fetching users:', error)
     );
   }
 
   createUser(user: TUser) {
-    this.http.post<TUser>('http://localhost:3002/users', user).subscribe(
+    this.http.post<TUser>('http://localhost:3001/users', user).subscribe(
       (newUser) => {
         this.usersSubject.next([...this.usersSubject.value, newUser]);
         this.setModalVisibility('add', false);
@@ -64,7 +64,7 @@ export class UserStateService {
 
   updateUser(updatedUser: TUser) {
     this.http
-      .put<TUser>(`http://localhost:3002/users/${updatedUser.id}`, updatedUser)
+      .put<TUser>(`http://localhost:3001/users/${updatedUser.id}`, updatedUser)
       .subscribe(
         (updated) => {
           const updatedUsers = this.usersSubject.value.map((user) =>
@@ -78,7 +78,7 @@ export class UserStateService {
   }
 
   deleteUser(userId: string) {
-    this.http.delete(`http://localhost:3002/users/${userId}`).subscribe(
+    this.http.delete(`http://localhost:3001/users/${userId}`).subscribe(
       () => {
         const updatedUsers = this.usersSubject.value.filter(
           (user) => user.id !== userId
