@@ -29,14 +29,18 @@ export class UserStateService {
   constructor(private http: HttpClient) {
     this.filteredUsers$ = combineLatest([this.users$, this.filterTerm$]).pipe(
       map(([users, filterTerm]) => {
-        const lowerFilterTerm = filterTerm.toLowerCase();
-        return users.filter(
-          (user) =>
-            user.name.toLowerCase().includes(lowerFilterTerm) ||
-            user.username.toLowerCase().includes(lowerFilterTerm) ||
-            user.email.toLowerCase().includes(lowerFilterTerm) ||
-            user.role.toLowerCase().includes(lowerFilterTerm)
-        );
+        if (filterTerm === '') {
+          return users;
+        } else {
+          const lowerFilterTerm = filterTerm.toLowerCase();
+          return users.filter(
+            (user) =>
+              user.name.toLowerCase().includes(lowerFilterTerm) ||
+              user.username.toLowerCase().includes(lowerFilterTerm) ||
+              user.email.toLowerCase().includes(lowerFilterTerm) ||
+              user.role.toLowerCase().includes(lowerFilterTerm)
+          );
+        }
       })
     );
   }
