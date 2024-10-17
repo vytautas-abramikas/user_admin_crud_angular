@@ -4,9 +4,12 @@
   <div class="lg:container lg:mx-auto bg-white lg:shadow-lg lg:rounded-lg p-6">
     <app-header></app-header>
     <app-users-table></app-users-table>
-    <!-- <UsersTable />
-  <UserModal v-if="isVisibleAddUserModal" />
-  <UserModal v-if="isVisibleEditUserModal" />
-  <RemoveUserModal v-if="isVisibleRemoveUserModal" /> -->
+    <app-user-modal
+      *ngIf="isVisibleAddUserModal$ | async as isVisibleAddUserModal"
+    ></app-user-modal>
+    <app-user-modal
+      *ngIf="isVisibleEditUserModal$ | async as isVisibleEditUserModal"
+    ></app-user-modal>
+    <!-- <RemoveUserModal v-if="isVisibleRemoveUserModal" /> -->
   </div>
 </div>
