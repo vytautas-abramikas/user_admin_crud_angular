@@ -9,10 +9,11 @@
     Add User
   </button>
   <input
+    #searchInput
     type="text"
     id="searchInput"
     class="border border-gray-300 rounded-lg px-4 py-2 w-1/3 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
     placeholder="Filter users..."
-    (keyup)="setFilterTerm($event)"
+    (input)="setFilterTerm($event)"
   />
 </div>

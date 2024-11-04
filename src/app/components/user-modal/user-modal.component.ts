@@ -11,6 +11,7 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { TUser } from '../../../types/TUser';
+import { sanitize } from '../../../lib/sanitize';
 
 @Component({
   selector: 'app-user-modal',
@@ -75,6 +76,14 @@ export class UserModalComponent implements OnInit {
 
   closeUserModal() {
     this.userStateService.setModalVisibility(this.userModalMode, false);
+  }
+
+  sanitizeInput(controlName: string, event: Event) {
+    const input = event.target as HTMLInputElement | HTMLSelectElement;
+    const sanitizedValue = sanitize(input.value);
+    this.userForm.controls[controlName].setValue(sanitizedValue, {
+      emitEvent: false,
+    });
   }
 
   emailValidator(): ValidatorFn {
